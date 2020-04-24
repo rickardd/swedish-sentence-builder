@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "serve ."
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "gsap": "^3.2.6"
+    "gsap": "^3.2.6",
+    "serve": "^11.3.0"
   }
 }
