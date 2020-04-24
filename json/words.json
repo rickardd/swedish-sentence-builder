@@ -8,7 +8,7 @@
             "Hur",
             "När",
             "Vem",
-            "ska"
+            "Ska"
         ]
     },
     {
@@ -16,9 +16,22 @@
         "groupSelector": "#word-group-adjectives",
         "words": [
             "Lång",
+            "Långt",
+            "Långa",
             "Kort",
-            "Stor",
-            "Liten"
+            "Korta",
+            "Svart",
+            "Svarta",
+            "Blå",
+            "Blåt",
+            "Blåa",
+            "Lila",
+            "Brun",
+            "Brunt",
+            "Bruna",
+            "Vit",
+            "Vitt",
+            "Vita"
         ]
     },
     {
@@ -27,18 +40,8 @@
         "words": [
             "Hus",
             "Träd",
-            "Kök",
-            "Skafferi",
-            "Golv ",
-            "Glas",
-            "Fönster",
-            "Kniv",
-            "Gaffel",
             "Bil",
-            "Sked",
-            "Tallrik",
-            "Säng",
-            "Vägg"
+            "Säng"
         ]
     },
     {

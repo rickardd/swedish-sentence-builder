@@ -14,5 +14,9 @@
     {
         "question": "Where is she?",
         "answer": "Var är hon"
+    },
+    {
+        "question": "A black car in the tree",
+        "answer": "En svart bil i ett träd"
     }
 ]
