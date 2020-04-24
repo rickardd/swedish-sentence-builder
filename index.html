@@ -10,14 +10,41 @@
 
 <style>
     body {
-        padding: 48px;
         background-color: #f1f1f1;
         font-family: sans-serif;
+        margin: 12px;
     }
 
     svg {
-        width: 100%;
-        background-color: #ddd;
+        /* width: 100%; */
+        /* background-color: #ddd; */
+        margin: 0 auto;
+        display: block;
+
+    }
+
+    .buttons {
+        text-align: center;
+    }
+
+    button {
+        padding: 12px;
+        margin: 0 24px 12px 0;
+        border-radius: 4px;
+        font-size: 16px;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+        border: 0;
+        box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #reset-button {
+        background-color: gray;
+        color: white;
+    }
+
+    #submit-button {
+        background-color: green;
+        color: white;
     }
 
     .target {}
@@ -78,10 +105,11 @@
 </style>
 
 <body>
-
-    <button id="reset-button">Reset</button>
-    <button id="submit-button">Go</button>
-    <svg id="scene" width="800" height="900" xmlns="http://www.w3.org/2000/svg">
+    <div class="buttons">
+        <button id="reset-button">Reset</button>
+        <button id="submit-button">Go</button>
+    </div>
+    <svg id="scene" width="844" height="900" xmlns="http://www.w3.org/2000/svg">
 
         <symbol id="word-template">
             <g class="word-wrapper" transform="translate(0,0)">
