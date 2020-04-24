@@ -1,4 +1,5 @@
 import gsap from "../node_modules/gsap/all.js";
+// import { InertiaPlugin } from "../node_modules/gsap/InertiaPlugin.js";
 import { Draggable } from "../node_modules/gsap/Draggable.js";
 import { Word } from "./Word.js";
 import { WordGroup } from "./WordGroup.js";
@@ -7,26 +8,72 @@ import { JsonLoader } from "./JsonLoader.js";
 // gsap.registerPlugin(InertiaPlugin);
 gsap.registerPlugin(Draggable);
 
+const target = document.querySelector("#target")
+
+const gridWidth = 100;
+const gridHeight = 100;
+const gridGutterX = 24;
+const gridGutterY = 24;
+
+let answers = []
+let answer = ""
+
+function updateAnswer() {
+    const wordEls = scene.querySelectorAll(".is-answer");
+    answers = []
+    answer = ""
+
+    wordEls.forEach(el => {
+        const groupX = gsap.getProperty(el.closest(".word-group"), "x")
+        const dX = gsap.getProperty(el, "x")
+        const finalX = groupX + dX
+        const index = (finalX / (gridWidth + gridGutterX))
+        const text = el.querySelector("text").textContent
+        answers[index] = text.trim()
+    })
+    answer = answers.join(" ").replace(/\s+/g, " ")
+    console.log(answer)
+}
+
 function makeDraggable() {
-    var gridWidth = 10;
-    var gridHeight = 10;
-    const wordRects = document.querySelectorAll(".test")
-    Draggable.create(wordRects,
+
+    const wordWrappers = document.querySelectorAll(".word-wrapper")
+    Draggable.create(wordWrappers,
         {
             type: "x,y",
-            // edgeResistance: 0.65,
-            // bounds: "#target",
-            // lockAxis: true,
-            // inertia: true,
-            // liveSnap: true,
-            // snap: {
-            //     x: function (endValue) {
-            //         return Math.round(endValue / gridWidth) * gridWidth;
-            //     },
-            //     y: function (endValue) {
-            //         return Math.round(endValue / gridHeight) * gridHeight;
-            //     }
-            // }
+            onDrag: function (e) {
+                if (this.hitTest("#target")) {
+                    target.classList.add("hit")
+                }
+                else {
+                    target.classList.remove("hit")
+                }
+
+            },
+            onDragEnd: function (e) {
+                // const textEl = e.target.nodeName == "text"
+                //     ? e.target.textContent
+                //     : e.target.nextSibling.nextElementSibling.textContent
+
+                const wordWrapper = this.target.closest(".word-wrapper")
+
+                if (this.hitTest("#target")) {
+                    wordWrapper.classList.add("is-answer")
+                }
+                else {
+                    wordWrapper.classList.remove("is-answer")
+                    target.classList.remove("hit")
+                }
+                updateAnswer()
+            },
+            liveSnap: {
+                x: function (value) {
+                    return Math.round(value / (gridWidth + gridGutterX)) * (gridWidth + gridGutterX);
+                },
+                y: function (value) {
+                    return Math.round(value / (gridWidth + gridGutterX)) * (gridWidth + gridGutterX);
+                }
+            }
         }
     );
 }
@@ -35,13 +82,13 @@ function makeDraggable() {
 // const getEls = document.querySelectorAll;
 
 // templates
-const wordTemplate = document.querySelector("#word-template")
+const wordTemplate = document.querySelector("#word-template g")
 
 // scene
 const scene = document.querySelector("#scene")
 
 function createWordEl(groupName, text) {
-    const wordClone = wordTemplate.content.cloneNode(true); // true, clones text. Maybe it should be false. 
+    const wordClone = wordTemplate.cloneNode(true); // true, clones text. Maybe it should be false. 
     const rectEl = wordClone.querySelector("rect")
     const textEl = wordClone.querySelector("text")
     rectEl.classList.add(groupName)
@@ -76,14 +123,14 @@ function addWordsToGroup(wordData) {
     });
 }
 
-const groupWidth = 100; // should be dynamic value
+// const groupWidth = 100; // should be dynamic value - try $0.getBBox() to get <g> width
 
 function positionGroups(wordData) {
     wordData.forEach(({ group, groupSelector: selector }, i) => {
         const el = scene.querySelector(selector)
         gsap.set(el, {
-            x: i * (groupWidth + 24),
-            y: 200,
+            x: i * (gridWidth + gridGutterX),
+            y: 150 + gridGutterX,
         })
     });
 }
@@ -94,18 +141,12 @@ function positionWords() {
     const groups = scene.querySelectorAll(".word-group")
     groups.forEach(group => {
         const words = group.querySelectorAll(".word-wrapper")
-
-        words.forEach((word, i) => {
-            word.setAttribute("y", i * (wordHeight + 24))
+        gsap.set(words, {
+            // delay: 1,
+            y: i => {
+                return i * (100 + gridGutterY)
+            },
         })
-        // For some reason gsap doesnt want to positioning the svg element
-        // gsap.to(words, {
-        //     // y: i => {
-        //     //     console.log(i, words)
-        //     //     return i * (100 + 24)
-        //     // },
-        //     y: 200
-        // })
     });
 
 }
