@@ -14,7 +14,7 @@ const submitButton = document.querySelector("#submit-button")
 const questionEl = document.querySelector("#question")
 
 const gridWidth = 100;
-const gridHeight = 60;
+const gridHeight = 40;
 const gridGutterX = 24;
 const gridGutterY = 6;
 
@@ -197,6 +197,7 @@ function onSubmit(e) {
 function setQuestion() {
     const randomIndex = Math.floor(Math.random() * 2);
     currentQuestion = questions[randomIndex]
+    questions.splice(randomIndex, 1) // removes question from list
     questionEl.innerHTML = currentQuestion.question
     console.log(currentQuestion)
 }
