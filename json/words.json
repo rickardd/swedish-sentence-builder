@@ -1,0 +1,64 @@
+[
+    {
+        "group": "question-marker",
+        "groupSelector": "#word-group-question-markers",
+        "words": [
+            "one",
+            "two",
+            "three"
+        ]
+    },
+    {
+        "group": "adjective",
+        "groupSelector": "#word-group-adjectives",
+        "words": [
+            "adj-1",
+            "adj-3"
+        ]
+    },
+    {
+        "group": "noun",
+        "groupSelector": "#word-group-nouns",
+        "words": [
+            "noun-1",
+            "noun-2",
+            "noun-3"
+        ]
+    },
+    {
+        "group": "verb",
+        "groupSelector": "#word-group-verbs",
+        "words": [
+            "one",
+            "two",
+            "three"
+        ]
+    },
+    {
+        "group": "prepositions",
+        "groupSelector": "#word-group-prepositions",
+        "words": [
+            "one",
+            "two",
+            "three"
+        ]
+    },
+    {
+        "group": "I-form",
+        "groupSelector": "#word-group-person-I-form",
+        "words": [
+            "one",
+            "two",
+            "three"
+        ]
+    },
+    {
+        "group": "my-form",
+        "groupSelector": "#word-group-person-my-form",
+        "words": [
+            "one",
+            "two",
+            "three"
+        ]
+    }
+]

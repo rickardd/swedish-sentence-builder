@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Heja Sverige!</title>
+</head>
+
+<style>
+    body {
+        padding: 48px;
+        background-color: #f1f1f1;
+        font-family: sans-serif;
+    }
+
+    svg {
+        width: 100%;
+        background-color: #ddd;
+    }
+
+    .question {
+        font-size: 24px;
+        fill: black;
+    }
+
+    .question-marker {
+        fill: #000;
+    }
+
+    .adjective {
+        fill: #555;
+    }
+
+    .noun {
+        fill: #aaa;
+    }
+
+    .verb {
+        fill: #00f;
+    }
+
+    .prepositions {
+        fill: #55f;
+    }
+
+    .I-form {
+        fill: #aaf;
+    }
+
+    .my-form {
+        fill: #f55;
+    }
+</style>
+
+<body>
+
+    <template id="word-template">
+        <svg class="word-wrapper" width="100" height="40" y="0" x="0" xmlns="http://www.w3.org/2000/svg">
+            <g class="test">
+                <rect x="0" y="0" width="100%" height="100%" fill="red" rx="5"></rect>
+                <text x="50%" y="50%" fill="yellow" dominant-baseline="middle" text-anchor="middle">Where</text>
+            </g>
+        </svg>
+    </template>
+
+
+    <svg id="scene" width="800" height="900" xmlns="http://www.w3.org/2000/svg">
+
+        <text x="0" y="24" class="question">Where are my white cars?</text>
+        <rect id="target" x="0" y="50" width="400" height="100" rx="15" fill="#555"></rect>
+
+        <g id="word-groups">
+            <g id="word-group-question-markers" class="word-group word-group-question-markers">
+
+            </g>
+
+            <g id="word-group-adjectives" class="word-group word-group-adjectives">
+
+            </g>
+
+            <g id="word-group-nouns" class="word-group word-group-nouns">
+
+            </g>
+
+            <g id="word-group-verbs" class="word-group word-group-verbs">
+
+            </g>
+
+            <g id="word-group-prepositions" class="word-group word-group-prepositions">
+
+            </g>
+
+            <g id="word-group-person-I-form" class="word-group word-group-person-I-form">
+
+            </g>
+
+            <g id="word-group-person-my-form" class="word-group word-group-person-my-form">
+
+            </g>
+        </g>
+
+    </svg>
+
+    <script type="module" src="js/app.js"></script>
+
+</body>
+
+</html>
+
+
+
+<!-- 
+Question makers
+- Is/are
+- Where
+- How
+- When
+- Who
+- How
+
+Prepositions 
+- Till
+- På
+- I
+- Vid
+- Att
+
+Adjectives
+- Long
+- Short
+- Big
+- Small
+
+Person base form
+- I
+- You
+- He
+- She
+- It
+- We
+- You(plu)
+- They
+
+Nous (Ett)
+- Hus
+- Träd
+- Kök
+- Skafferi
+- Golv 
+- Glas
+- Fönster
+
+Nous (En)
+- Kniv
+- Raffle
+- Bil
+- Sked
+- Tallrik
+- Säng
+- Vägg
+
+Verbs
+- Gå
+- Promenera
+- Springa
+- Hitta
+- Hämta
+- Se
+- Tala -->
