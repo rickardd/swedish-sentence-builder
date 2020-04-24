@@ -185,7 +185,7 @@ function reset(e) {
 
 function onSubmit(e) {
     console.log('onsubmit', answer, currentQuestion.answer)
-    if (answer === currentQuestion.answer) {
+    if (answer.toLocaleLowerCase() === currentQuestion.answer.toLocaleLowerCase()) {
         alert("yay")
         reset()
     }

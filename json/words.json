@@ -3,67 +3,103 @@
         "group": "question-marker",
         "groupSelector": "#word-group-question-markers",
         "words": [
-            "var",
-            "är",
-            "mina",
-            "vita",
-            "bilar"
+            "Är",
+            "Var",
+            "Hur",
+            "När",
+            "Vem"
         ]
     },
     {
         "group": "adjective",
         "groupSelector": "#word-group-adjectives",
         "words": [
-            "den",
-            "blåa",
-            "katten",
-            "och",
-            "jag"
+            "Lång",
+            "Kort",
+            "Stor",
+            "Liten"
         ]
     },
     {
         "group": "noun",
         "groupSelector": "#word-group-nouns",
         "words": [
-            "noun-1",
-            "noun-2",
-            "noun-3"
+            "Hus",
+            "Träd",
+            "Kök",
+            "Skafferi",
+            "Golv ",
+            "Glas",
+            "Fönster",
+            "Kniv",
+            "Gaffel",
+            "Bil",
+            "Sked",
+            "Tallrik",
+            "Säng",
+            "Vägg"
         ]
     },
     {
         "group": "verb",
         "groupSelector": "#word-group-verbs",
         "words": [
-            "one",
-            "two",
-            "three"
+            "Gå",
+            "Promenera",
+            "Springa",
+            "Hitta",
+            "Hämta",
+            "Se",
+            "Tala",
+            "Kommer"
         ]
     },
     {
         "group": "prepositions",
         "groupSelector": "#word-group-prepositions",
         "words": [
-            "one",
-            "two",
-            "three"
+            "Till",
+            "På",
+            "I",
+            "Vid",
+            "Att",
+            "Med"
         ]
     },
     {
         "group": "I-form",
         "groupSelector": "#word-group-person-I-form",
         "words": [
-            "one",
-            "two",
-            "three"
+            "Jag",
+            "Du",
+            "Han",
+            "Hon",
+            "Det",
+            "Den",
+            "Vi",
+            "Ni",
+            "Dem (De, Dom)"
         ]
     },
     {
         "group": "my-form",
         "groupSelector": "#word-group-person-my-form",
         "words": [
-            "one",
-            "two",
-            "three"
+            "Min",
+            "Mitt",
+            "Mina",
+            "Din",
+            "Ditt",
+            "Dina",
+            "Hennes",
+            "Hanns",
+            "Våran",
+            "Vårat",
+            "Våra",
+            "Eran",
+            "Erat",
+            "Era",
+            "Deras"
         ]
     }
 ]

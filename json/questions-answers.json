@@ -1,10 +1,18 @@
 [
     {
-        "question": "where are my white cars",
-        "answer": "var är mina vita bilar"
+        "question": "Are you small?",
+        "answer": "Är du liten"
     },
     {
-        "question": "the blue cat and I",
-        "answer": "den blåa katten och jag"
+        "question": "When will you run?",
+        "answer": "När kommer du att springa"
+    },
+    {
+        "question": "Shall we talk to her?",
+        "answer": "Ska vi tala med henne"
+    },
+    {
+        "question": "Where is she?",
+        "answer": "Var är hon"
     }
 ]
