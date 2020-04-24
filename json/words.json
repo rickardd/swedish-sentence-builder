@@ -3,17 +3,22 @@
         "group": "question-marker",
         "groupSelector": "#word-group-question-markers",
         "words": [
-            "one",
-            "two",
-            "three"
+            "var",
+            "är",
+            "mina",
+            "vita",
+            "bilar"
         ]
     },
     {
         "group": "adjective",
         "groupSelector": "#word-group-adjectives",
         "words": [
-            "adj-1",
-            "adj-3"
+            "den",
+            "blåa",
+            "katten",
+            "och",
+            "jag"
         ]
     },
     {

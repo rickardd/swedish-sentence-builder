@@ -9,11 +9,17 @@ import { JsonLoader } from "./JsonLoader.js";
 gsap.registerPlugin(Draggable);
 
 const target = document.querySelector("#target")
+const resetButton = document.querySelector("#reset-button")
+const submitButton = document.querySelector("#submit-button")
+const questionEl = document.querySelector("#question")
 
 const gridWidth = 100;
 const gridHeight = 100;
 const gridGutterX = 24;
 const gridGutterY = 24;
+
+let questions;
+let currentQuestion;
 
 let answers = []
 let answer = ""
@@ -32,7 +38,6 @@ function updateAnswer() {
         answers[index] = text.trim()
     })
     answer = answers.join(" ").replace(/\s+/g, " ")
-    console.log(answer)
 }
 
 function makeDraggable() {
@@ -76,6 +81,13 @@ function makeDraggable() {
             }
         }
     );
+}
+
+function resetWordClasses() {
+    const wordWrappers = document.querySelectorAll(".word-wrapper")
+    wordWrappers.forEach(el => {
+        el.classList.remove("is-answer")
+    })
 }
 
 // const getEl = document.querySelector;
@@ -123,10 +135,8 @@ function addWordsToGroup(wordData) {
     });
 }
 
-// const groupWidth = 100; // should be dynamic value - try $0.getBBox() to get <g> width
-
 function positionGroups(wordData) {
-    wordData.forEach(({ group, groupSelector: selector }, i) => {
+    wordData.forEach(({ groupSelector: selector }, i) => {
         const el = scene.querySelector(selector)
         gsap.set(el, {
             x: i * (gridWidth + gridGutterX),
@@ -141,14 +151,39 @@ function positionWords() {
     const groups = scene.querySelectorAll(".word-group")
     groups.forEach(group => {
         const words = group.querySelectorAll(".word-wrapper")
-        gsap.set(words, {
-            // delay: 1,
+        gsap.to(words, {
+            delay: 1,
+            x: 0,
             y: i => {
                 return i * (100 + gridGutterY)
             },
         })
     });
 
+}
+
+function reset(e) {
+    positionWords()
+    setQuestion()
+    resetWordClasses()
+}
+
+function onSubmit(e) {
+    console.log('onsubmit', answer, currentQuestion.answer)
+    if (answer === currentQuestion.answer) {
+        alert("yay")
+        reset()
+    }
+    else {
+        alert("nope")
+    }
+}
+
+function setQuestion() {
+    const randomIndex = Math.floor(Math.random() * 2);
+    currentQuestion = questions[randomIndex]
+    questionEl.innerHTML = currentQuestion.question
+    console.log(currentQuestion)
 }
 
 function init(wordData) {
@@ -164,3 +199,14 @@ jsonLoader.load('json/words.json')
     .then(wordsData => {
         init(wordsData)
     })
+
+// make a promise.all
+jsonLoader.load('json/questions-answers.json')
+    .then(questionData => {
+        questions = questionData
+        setQuestion()
+    })
+
+resetButton.addEventListener("click", reset)
+
+submitButton.addEventListener("click", onSubmit)
