@@ -14,15 +14,20 @@ const submitButton = document.querySelector("#submit-button")
 const questionEl = document.querySelector("#question")
 
 const gridWidth = 100;
-const gridHeight = 100;
+const gridHeight = 60;
 const gridGutterX = 24;
-const gridGutterY = 24;
+const gridGutterY = 6;
 
 let questions;
 let currentQuestion;
 
 let answers = []
 let answer = ""
+
+gsap.set(target, {
+    width: gridWidth * 7 + gridGutterX * 6,
+    height: gridHeight
+})
 
 function updateAnswer() {
     const wordEls = scene.querySelectorAll(".is-answer");
@@ -76,7 +81,7 @@ function makeDraggable() {
                     return Math.round(value / (gridWidth + gridGutterX)) * (gridWidth + gridGutterX);
                 },
                 y: function (value) {
-                    return Math.round(value / (gridWidth + gridGutterX)) * (gridWidth + gridGutterX);
+                    return Math.round(value / (gridHeight + gridGutterY)) * (gridHeight + gridGutterY);
                 }
             }
         }
@@ -104,6 +109,10 @@ function createWordEl(groupName, text) {
     const rectEl = wordClone.querySelector("rect")
     const textEl = wordClone.querySelector("text")
     rectEl.classList.add(groupName)
+    gsap.set(rectEl, {
+        width: gridWidth,
+        height: gridHeight
+    })
     textEl.innerHTML = text
     return wordClone
 }
@@ -138,9 +147,15 @@ function addWordsToGroup(wordData) {
 function positionGroups(wordData) {
     wordData.forEach(({ groupSelector: selector }, i) => {
         const el = scene.querySelector(selector)
+
+        // const targetY = gsap.getProperty(target, "y")
+        // const targetHeight = gsap.getProperty(target, "y")
+        // target.getBBox()
+        // debugger
+
         gsap.set(el, {
             x: i * (gridWidth + gridGutterX),
-            y: 150 + gridGutterX,
+            y: target.getBBox().y + target.getBBox().height + gridGutterY,
         })
     });
 }
@@ -155,7 +170,7 @@ function positionWords() {
             delay: 1,
             x: 0,
             y: i => {
-                return i * (100 + gridGutterY)
+                return i * (gridHeight + gridGutterY)
             },
         })
     });
