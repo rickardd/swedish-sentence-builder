@@ -8,27 +8,19 @@
             "Hur",
             "När",
             "Vem",
-            "Ska"
+            "Ska",
+            "En",
+            "Ett",
+            "Två"
         ]
     },
     {
         "group": "adjective",
         "groupSelector": "#word-group-adjectives",
         "words": [
-            "Lång",
-            "Långt",
-            "Långa",
-            "Kort",
-            "Korta",
             "Svart",
             "Svarta",
-            "Blå",
-            "Blåt",
-            "Blåa",
             "Lila",
-            "Brun",
-            "Brunt",
-            "Bruna",
             "Vit",
             "Vitt",
             "Vita"
@@ -38,24 +30,34 @@
         "group": "noun",
         "groupSelector": "#word-group-nouns",
         "words": [
-            "Hus",
             "Träd",
+            "Trädet",
+            "Träden",
             "Bil",
-            "Säng"
+            "Bilen",
+            "Bilar",
+            "Bilarna"
         ]
     },
     {
         "group": "verb",
         "groupSelector": "#word-group-verbs",
         "words": [
-            "Gå",
-            "Promenera",
             "Springa",
+            "Springer",
+            "Sprang",
             "Hitta",
-            "Hämta",
-            "Se",
-            "Tala",
-            "Kommer"
+            "Hittar",
+            "Hittade",
+            "Promenera",
+            "Promenerar",
+            "Promenerade",
+            "Komma",
+            "Kommer",
+            "Kom",
+            "Ha",
+            "Har",
+            "Hade"
         ]
     },
     {

@@ -1,22 +1,74 @@
 [
     {
-        "question": "Are you small?",
-        "answer": "Är du liten"
+        "question": "Are you purple?",
+        "answer": "Är du lila"
     },
     {
         "question": "When will you run?",
         "answer": "När kommer du att springa"
     },
     {
-        "question": "Shall we talk to her?",
-        "answer": "Ska vi tala med henne"
+        "question": "Shall we walk to them?",
+        "answer": "Ska vi promenera med dem"
     },
     {
-        "question": "Where is she?",
-        "answer": "Var är hon"
+        "question": "Where is she walking to?",
+        "answer": "Var går hon till"
     },
     {
-        "question": "A black car in the tree",
-        "answer": "En svart bil i ett träd"
+        "question": "A black car in the white tree",
+        "answer": "En svart bil i det vita trädet"
+    },
+    {
+        "question": "The white car in the black tree",
+        "answer": "den vita bilen i det svarta trädet"
+    },
+    {
+        "question": "The black car is at my white car",
+        "answer": "den svarta bilen är vid min vita bil"
+    },
+    {
+        "question": "Your cars are white",
+        "answer": "Dina bilar är vita"
+    },
+    {
+        "question": "She walks with the white car",
+        "answer": "Hon promenerar med den vita bilen"
+    },
+    {
+        "question": "It is theirs purple cars",
+        "answer": "Det är deras lila bilar"
+    },
+    {
+        "question": "How does your cars run",
+        "answer": "Hur springer dina bilar"
+    },
+    {
+        "question": "Shall we go to them",
+        "answer": "Ska vi gå till dem"
+    },
+    {
+        "question": "Will you come to my tree_",
+        "answer": "kommer du till mitt träd"
+    },
+    {
+        "question": "When did you find my tree?",
+        "answer": "När hittade du mitt träd"
+    },
+    {
+        "question": "Will you come to my car?",
+        "answer": "Kommer du att komma till min bil"
+    },
+    {
+        "question": "She had two white cars",
+        "answer": "Hon hade två svarta bilar"
+    },
+    {
+        "question": "Have you found my purple trees",
+        "answer": "Har du hittat mina lila träd"
+    },
+    {
+        "question": "When shall we go to the trees",
+        "answer": "När ska vi promenera till träderna"
     }
 ]
