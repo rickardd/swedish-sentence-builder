@@ -9,14 +9,16 @@ export function skip(groupCollection, question) {
     groupCollection.reset()
 }
 
-export function submit(target, question) {
+export function submit(target, question, score) {
     const words = getAllWords()
     const answer = target.getAnswer(words)
     if (question.validate(answer)) {
         alert("Yay!")
+        score.addSuccess(question)
         reset()
     }
     else {
         alert("Nope!")
+        score.addFailed(question)
     }
 }

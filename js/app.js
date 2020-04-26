@@ -20,6 +20,8 @@ gsap.registerPlugin(Draggable);
 
 const scene = document.querySelector("#scene")
 const targetEl = scene.querySelector("#target")
+const scoreNumberEl = document.querySelector("#score-number")
+const scoreTotalEl = document.querySelector("#score-total")
 const resetButton = document.querySelector("#reset-button")
 const submitButton = document.querySelector("#submit-button")
 const questionEl = scene.querySelector("#question")
@@ -33,6 +35,7 @@ const gridHeight = 32;
 const groupCollection = new GroupCollection()
 const question = new Question(questionEl)
 const target = new Target(targetEl)
+const score = new Score(scoreNumberEl, scoreTotalEl);
 const jsonLoader = new JsonLoader();
 
 gsap.set(targetEl, {
@@ -107,6 +110,7 @@ const questionLoader = jsonLoader.load('json/questions-answers.json')
 Promise.all([wordsLoader, questionLoader])
     .then(([wordsData, questionData]) => {
         init(wordsData)
+        score.setMax(questionData.length)
         question.setCollection(questionData)
         question.next()
     })
@@ -116,5 +120,5 @@ resetButton.addEventListener("click", e => {
 })
 
 submitButton.addEventListener("click", e => {
-    submit(target, question)
+    submit(target, question, score)
 })
