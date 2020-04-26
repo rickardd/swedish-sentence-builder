@@ -16,7 +16,8 @@ export class Target {
                 const groupX = gsap.getProperty(word.el.closest(".word-group"), "x")
                 const dX = gsap.getProperty(word.el, "x")
                 const finalX = groupX + dX
-                const index = (finalX / (word.width + word.gutterX))
+                // const index = (finalX / (word.width + word.gutterX))
+                const index = parseInt(parseInt(finalX, 10) / (parseInt(word.width, 10) + (parseInt(word.gutterX, 10))), 10)
                 answers[index] = word.text.trim()
             })
 

@@ -4,9 +4,13 @@ function getAllWords() {
     }, []).flat()
 }
 
-export function skip(groupCollection, question) {
+function next() {
     question.next()
     groupCollection.reset()
+}
+
+export function skip(groupCollection, question) {
+    next(groupCollection, question)
 }
 
 export function submit(target, question, score) {
@@ -15,7 +19,7 @@ export function submit(target, question, score) {
     if (question.validate(answer)) {
         alert("Yay!")
         score.addSuccess(question)
-        reset()
+        next(groupCollection, question)
     }
     else {
         alert("Nope!")
