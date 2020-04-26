@@ -29,7 +29,7 @@ export class Group {
         this.wordCollection.forEach((word, i) => {
             if (word.el) {
                 gsap.to(word.el, {
-                    delay: 1,
+                    delay: .1,
                     x: 0,
                     y: i * (word.height + word.gutterY),
                 })

@@ -12,8 +12,10 @@ import { Category } from "./Category.js"
 import { Drag } from "./Drag.js"
 import { Grid } from "./Grid.js"
 import { Target } from "./Target.js"
+import { skip, submit } from "./helper.js"
 
 // gsap.registerPlugin(InertiaPlugin);
+
 gsap.registerPlugin(Draggable);
 
 const scene = document.querySelector("#scene")
@@ -74,33 +76,6 @@ function makeDraggable() {
     );
 }
 
-function getAllWords() {
-    return collection.collection.reduce((acc, group) => {
-        return [...acc, group.wordCollection]
-    }, []).flat()
-}
-
-function reset() {
-    question.next()
-    groupCollection.reset()
-}
-
-function onReset(e) {
-    reset()
-}
-
-function onSubmit(e) {
-    const words = getAllWords()
-    const answer = target.getAnswer(words)
-    if (question.validate(answer)) {
-        alert("Yay!")
-        reset()
-    }
-    else {
-        alert("Nope!")
-    }
-}
-
 function init(wordData) {
 
     wordData.forEach(groupData => {
@@ -136,6 +111,10 @@ Promise.all([wordsLoader, questionLoader])
         question.next()
     })
 
-resetButton.addEventListener("click", onReset)
+resetButton.addEventListener("click", e => {
+    skip(groupCollection, question)
+})
 
-submitButton.addEventListener("click", onSubmit)
+submitButton.addEventListener("click", e => {
+    submit(target, question)
+})

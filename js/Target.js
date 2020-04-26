@@ -13,7 +13,6 @@ export class Target {
         words
             .filter(word => word.el.classList.contains("is-answer"))
             .forEach(word => {
-                debugger
                 const groupX = gsap.getProperty(word.el.closest(".word-group"), "x")
                 const dX = gsap.getProperty(word.el, "x")
                 const finalX = groupX + dX
