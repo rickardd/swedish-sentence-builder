@@ -120,5 +120,5 @@ resetButton.addEventListener("click", e => {
 })
 
 submitButton.addEventListener("click", e => {
-    submit(target, question, score)
+    submit(target, question, score, groupCollection)
 })

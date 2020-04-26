@@ -24,8 +24,8 @@
         "answer": "den vita bilen i det svarta trädet"
     },
     {
-        "question": "The black car is at my white car",
-        "answer": "den svarta bilen är vid min vita bil"
+        "question": "The black car is at my car",
+        "answer": "den svarta bilen är vid min bil"
     },
     {
         "question": "Your cars are white",
@@ -61,11 +61,7 @@
     },
     {
         "question": "She had two white cars",
-        "answer": "Hon hade två svarta bilar"
-    },
-    {
-        "question": "Have you. found my purple trees",
-        "answer": "Har ni hittat mina lila träd"
+        "answer": "Hon hade två vita bilar"
     },
     {
         "question": "When shall we go to the trees",

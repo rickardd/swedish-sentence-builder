@@ -4,7 +4,7 @@ function getAllWords() {
     }, []).flat()
 }
 
-function next() {
+function next(groupCollection, question) {
     question.next()
     groupCollection.reset()
 }
@@ -13,7 +13,7 @@ export function skip(groupCollection, question) {
     next(groupCollection, question)
 }
 
-export function submit(target, question, score) {
+export function submit(target, question, score, groupCollection) {
     const words = getAllWords()
     const answer = target.getAnswer(words)
     if (question.validate(answer)) {
