@@ -36,8 +36,18 @@ export class Word {
         }
     }
 
+    static setAnswerClassByElement(el) {
+        el.closest(".word-wrapper").classList.add("is-answer")
+    }
+
+    static removeAnswerClassByElement(el) {
+        el.closest(".word-wrapper").classList.remove("is-answer")
+    }
+
     reset() {
         this.resetAnswerClass()
     }
+
+
 }
 

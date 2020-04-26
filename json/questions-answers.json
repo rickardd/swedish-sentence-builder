@@ -13,7 +13,7 @@
     },
     {
         "question": "Where is she walking to?",
-        "answer": "Var går hon till"
+        "answer": "Var promenerar hon till"
     },
     {
         "question": "A black car in the white tree",
@@ -45,10 +45,10 @@
     },
     {
         "question": "Shall we go to them",
-        "answer": "Ska vi gå till dem"
+        "answer": "Ska vi promenera till dem"
     },
     {
-        "question": "Will you come to my tree_",
+        "question": "Will you come to my tree?",
         "answer": "kommer du till mitt träd"
     },
     {
