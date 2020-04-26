@@ -1,22 +1,35 @@
 import gsap from "../node_modules/gsap/all.js";
 // import { InertiaPlugin } from "../node_modules/gsap/InertiaPlugin.js";
 import { Draggable } from "../node_modules/gsap/Draggable.js";
-import { Word } from "./Word.js";
-import { WordGroup } from "./WordGroup.js";
 import { JsonLoader } from "./JsonLoader.js";
+
+import { Score } from "./Score.js"
+import { Level } from "./Level.js"
+import { Question } from "./Question.js"
+import { Word } from "./Word.js"
+import { Group } from "./Group.js"
+import { GroupCollection } from "./GroupCollection.js"
+import { Category } from "./Category.js"
+import { Drag } from "./Drag.js"
+import { Grid } from "./Grid.js"
 
 // gsap.registerPlugin(InertiaPlugin);
 gsap.registerPlugin(Draggable);
 
+const scene = document.querySelector("#scene")
 const target = document.querySelector("#target")
 const resetButton = document.querySelector("#reset-button")
 const submitButton = document.querySelector("#submit-button")
 const questionEl = document.querySelector("#question")
+const wordTemplate = document.querySelector("#word-template g")
 
 const gridWidth = 100;
 const gridHeight = 40;
 const gridGutterX = 24;
 const gridGutterY = 6;
+
+const groupCollection = new GroupCollection()
+const jsonLoader = new JsonLoader();
 
 let questions;
 let currentQuestion;
@@ -88,109 +101,19 @@ function makeDraggable() {
     );
 }
 
-function resetWordClasses() {
-    const wordWrappers = document.querySelectorAll(".word-wrapper")
-    wordWrappers.forEach(el => {
-        el.classList.remove("is-answer")
-    })
-}
-
-// const getEl = document.querySelector;
-// const getEls = document.querySelectorAll;
-
-// templates
-const wordTemplate = document.querySelector("#word-template g")
-
-// scene
-const scene = document.querySelector("#scene")
-
-function createWordEl(groupName, text) {
-    const wordClone = wordTemplate.cloneNode(true); // true, clones text. Maybe it should be false. 
-    const rectEl = wordClone.querySelector("rect")
-    const textEl = wordClone.querySelector("text")
-    rectEl.classList.add(groupName)
-    gsap.set(rectEl, {
-        width: gridWidth,
-        height: gridHeight
-    })
-    textEl.innerHTML = text
-    return wordClone
-}
-
-/**
- * Appends a word to a group
- * 
- * @param {Element | String} groupEl 
- * @param {Element} wordEl 
- */
-function addWordToGroup(groupEl, wordEl) {
-    if (typeof groupEl === 'string') {
-        groupEl = scene.querySelector(groupEl)
-    }
-    groupEl.appendChild(wordEl)
-}
-
-function addWordsToGroup(wordData) {
-    wordData.forEach(data => {
-        if (!data.words)
-            return
-
-        let group = data.group
-        let groupSelector = data.groupSelector
-        data.words.forEach(word => {
-            const wordEl = createWordEl(group, word)
-            addWordToGroup(groupSelector, wordEl)
-        });
-    });
-}
-
-function positionGroups(wordData) {
-    wordData.forEach(({ groupSelector: selector }, i) => {
-        const el = scene.querySelector(selector)
-
-        // const targetY = gsap.getProperty(target, "y")
-        // const targetHeight = gsap.getProperty(target, "y")
-        // target.getBBox()
-        // debugger
-
-        gsap.set(el, {
-            x: i * (gridWidth + gridGutterX),
-            y: target.getBBox().y + target.getBBox().height + gridGutterY,
-        })
-    });
-}
-
-const wordHeight = 40; // should be dynamic value
-
-function positionWords() {
-    const groups = scene.querySelectorAll(".word-group")
-    groups.forEach(group => {
-        const words = group.querySelectorAll(".word-wrapper")
-        gsap.to(words, {
-            delay: 1,
-            x: 0,
-            y: i => {
-                return i * (gridHeight + gridGutterY)
-            },
-        })
-    });
-
-}
-
 function reset(e) {
-    positionWords()
     setQuestion()
-    resetWordClasses()
+    groupCollection.reset()
 }
 
 function onSubmit(e) {
     console.log('onsubmit', answer, currentQuestion.answer)
     if (answer.toLocaleLowerCase() === currentQuestion.answer.toLocaleLowerCase()) {
-        alert("yay")
+        alert("Yay!")
         reset()
     }
     else {
-        alert("nope")
+        alert("Nope!")
     }
 }
 
@@ -202,23 +125,40 @@ function setQuestion() {
     console.log(currentQuestion)
 }
 
+
+
 function init(wordData) {
-    positionGroups(wordData)
-    addWordsToGroup(wordData)
-    positionWords()
+
+    wordData.forEach(groupData => {
+        const groupName = groupData.group
+        const group = new Group(scene, groupData.group, groupData.groupSelector, gridWidth, gridGutterX)
+        groupCollection.addGroup(group)
+        groupData.words.forEach(wordText => {
+            const word = new Word(wordTemplate, groupName, wordText, gridWidth, gridHeight, gridGutterX, gridGutterY)
+            group.addWord(word);
+        })
+    })
+
+    // for debugging
+    window.collection = groupCollection
+
+    const groupY = target.getBBox().y + target.getBBox().height + gridGutterY
+    groupCollection.positionGroups(scene, groupY)
+
+    groupCollection.collection.forEach(group => {
+        group.appendWords();
+        group.positionWords()
+    })
     makeDraggable()
 }
 
-const jsonLoader = new JsonLoader();
+const wordsLoader = jsonLoader.load('json/words.json')
+const questionLoader = jsonLoader.load('json/questions-answers.json')
 
-jsonLoader.load('json/words.json')
-    .then(wordsData => {
+Promise.all([wordsLoader, questionLoader])
+    .then(([wordsData, questionData]) => {
+        console.log(wordsData, questionData)
         init(wordsData)
-    })
-
-// make a promise.all
-jsonLoader.load('json/questions-answers.json')
-    .then(questionData => {
         questions = questionData
         setQuestion()
     })
