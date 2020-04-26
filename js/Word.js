@@ -21,6 +21,10 @@ export class Word {
             width: this.width,
             height: this.height
         })
+        gsap.set(textEl, {
+            x: this.width / 2,
+            y: this.height / 2 + 2, // + 2 is to adjust text inline alignment issues.
+        })
         textEl.innerHTML = this.text
         return clone
     }

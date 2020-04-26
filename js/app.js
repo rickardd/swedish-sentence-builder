@@ -25,10 +25,10 @@ const submitButton = document.querySelector("#submit-button")
 const questionEl = scene.querySelector("#question")
 const wordTemplate = document.querySelector("#word-template g")
 
-const gridWidth = 100;
-const gridHeight = 40;
 const gridGutterX = 24;
 const gridGutterY = 6;
+const gridWidth = (scene.clientWidth / 7) - gridGutterX;
+const gridHeight = 32;
 
 const groupCollection = new GroupCollection()
 const question = new Question(questionEl)
@@ -61,8 +61,8 @@ function makeDraggable() {
                 }
                 else {
                     Word.removeAnswerClassByElement(this.target)
-                    targetEl.classList.remove("hit")
                 }
+                targetEl.classList.remove("hit")
             },
             liveSnap: {
                 x: function (value) {
