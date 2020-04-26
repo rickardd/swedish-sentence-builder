@@ -104,8 +104,8 @@ function init(wordData) {
     makeDraggable()
 }
 
-const wordsLoader = jsonLoader.load('json/words.json')
-const questionLoader = jsonLoader.load('json/questions-answers.json')
+const wordsLoader = jsonLoader.load('json/level-2/words.json')
+const questionLoader = jsonLoader.load('json/level-2/questions-answers.json')
 
 Promise.all([wordsLoader, questionLoader])
     .then(([wordsData, questionData]) => {

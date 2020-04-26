@@ -1,0 +1,79 @@
+[
+    {
+        "group": "question-marker",
+        "groupSelector": "#word-group-question-markers",
+        "words": [
+            "Är",
+            "En",
+            "Ett",
+            "Två"
+        ]
+    },
+    {
+        "group": "adjective",
+        "groupSelector": "#word-group-adjectives",
+        "words": [
+            "Svart",
+            "Svarta",
+            "Lila",
+            "Vit",
+            "Vitt",
+            "Vita"
+        ]
+    },
+    {
+        "group": "noun",
+        "groupSelector": "#word-group-nouns",
+        "words": [
+            "Träd",
+            "Trädet",
+            "Träden",
+            "Bil",
+            "Bilen",
+            "Bilar",
+            "Bilarna"
+        ]
+    },
+    {
+        "group": "verb",
+        "groupSelector": "#word-group-verbs",
+        "words": []
+    },
+    {
+        "group": "prepositions",
+        "groupSelector": "#word-group-prepositions",
+        "words": [
+            "I"
+        ]
+    },
+    {
+        "group": "I-form",
+        "groupSelector": "#word-group-person-I-form",
+        "words": [
+            "Det",
+            "Den",
+            "De"
+        ]
+    },
+    {
+        "group": "my-form",
+        "groupSelector": "#word-group-person-my-form",
+        "words": [
+            "Min",
+            "Mitt",
+            "Mina",
+            "Din",
+            "Ditt",
+            "Dina",
+            "Hennes",
+            "Hanns",
+            "Våran",
+            "Vårat",
+            "Våra",
+            "Eran",
+            "Erat",
+            "Era",
+            "Deras"
+        ]
+    }
+]
